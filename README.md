@@ -43,3 +43,13 @@ PEXELS_API_KEY=
 
 The MVP is designed to use local fallback assets so video generation can still
 work without optional media-provider keys.
+
+## Current Flow
+
+- Natural chat replies are handled by `/api/chat`.
+- URL messages are scraped server-side and turned into a product brief.
+- If `ANTHROPIC_API_KEY` is present, Claude improves product understanding and
+  preference parsing.
+- If the key is missing, deterministic fallback logic keeps the demo moving.
+- The assistant asks tone, audience, and conversion-goal questions in chat before
+  video generation.

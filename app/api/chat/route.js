@@ -1,16 +1,21 @@
 import { NextResponse } from "next/server";
-import { createAssistantReply } from "@/lib/basicAssistant";
+import { createAssistantReply } from "@/lib/chatFlow";
 
 export async function POST(request) {
   try {
     const body = await request.json();
     const messages = Array.isArray(body.messages) ? body.messages : [];
-    const reply = createAssistantReply(messages);
+    const context = body.context && typeof body.context === "object" ? body.context : {};
+    const reply = await createAssistantReply(messages, context);
 
     return NextResponse.json({
       message: {
         role: "assistant",
-        ...reply
+        ...reply.message
+      },
+      context: {
+        ...context,
+        ...reply.contextPatch
       }
     });
   } catch (error) {

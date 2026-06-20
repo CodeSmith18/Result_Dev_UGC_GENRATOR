@@ -25,6 +25,7 @@ function createMessage(role, content, extra = {}) {
 
 export function Chat() {
   const [messages, setMessages] = useState(initialMessages);
+  const [context, setContext] = useState({});
   const [isSending, setIsSending] = useState(false);
   const listRef = useRef(null);
 
@@ -57,7 +58,8 @@ export function Chat() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          messages: nextMessages.map(({ role, content }) => ({ role, content }))
+          messages: nextMessages.map(({ role, content }) => ({ role, content })),
+          context
         })
       });
 
@@ -66,6 +68,7 @@ export function Chat() {
       }
 
       const data = await response.json();
+      setContext(data.context || {});
       setMessages((current) => [
         ...current,
         createMessage("assistant", data.message.content, {
