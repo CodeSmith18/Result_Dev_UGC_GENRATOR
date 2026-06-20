@@ -20,7 +20,7 @@ const defaultProps = {
     extraInstructions: []
   },
   recipe: {
-    duration: 8,
+    duration: 6,
     format: "vertical",
     funnyText: "me when the annoying part finally handles itself",
     gifQuery: "shocked reaction sticker",
@@ -51,10 +51,10 @@ export function RemotionRoot() {
     <Composition
       id="UGCVideo"
       component={UGCVideo}
-      durationInFrames={240}
-      fps={30}
-      width={1080}
-      height={1920}
+      durationInFrames={144}
+      fps={24}
+      width={720}
+      height={1280}
       defaultProps={defaultProps}
     />
   );

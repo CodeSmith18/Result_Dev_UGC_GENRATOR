@@ -60,6 +60,11 @@ work without optional media-provider keys.
 - After preferences are collected, the app creates a UGC recipe, chooses assets,
   renders an MP4 with Remotion, saves it in `public/renders`, and returns the
   video URL in chat.
+- Generation is optimized for the demo loop: clicked chip preferences skip an
+  extra AI parsing call, URL analysis and media lookups are cached in memory,
+  likely assets and the Remotion bundle prewarm while the user picks options,
+  Giphy/Pexels lookups run in parallel, and rendering uses a 6-second 720x1280
+  composition at 24fps.
 - The rendered video intentionally uses a meme-only format inspired by the
   assignment examples: one vertical background clip, one funny text caption, one
   large reaction GIF/sticker, and audio. It avoids product badges, CTA cards, and

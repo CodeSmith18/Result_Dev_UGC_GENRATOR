@@ -12,12 +12,14 @@ import {
 
 export function UGCVideo({ productBrief, preferences, recipe, assets }) {
   const frame = useCurrentFrame();
-  const { fps, durationInFrames } = useVideoConfig();
+  const { durationInFrames, height, width } = useVideoConfig();
   const progress = frame / durationInFrames;
   const palette = assets.background.palette || ["#171717", "#0f766e", "#e05263"];
   const scale = interpolate(frame, [0, durationInFrames], [1.02, 1.12]);
   const caption = recipe.funnyText || "me when the product handles it";
-  const captionFontSize = caption.length > 74 ? 43 : caption.length > 52 ? 49 : 56;
+  const sizeScale = width / 1080;
+  const captionFontSize =
+    caption.length > 74 ? 43 * sizeScale : caption.length > 52 ? 49 * sizeScale : 56 * sizeScale;
   const stickerScale = interpolate(frame % 52, [0, 14, 30, 52], [1.18, 1.28, 1.23, 1.2]);
   const stickerRotate = interpolate(frame % 84, [0, 42, 84], [-1.5, 1.5, -1.5]);
   const gifSrc = resolveMediaSrc(assets.gif.url);
@@ -79,9 +81,9 @@ export function UGCVideo({ productBrief, preferences, recipe, assets }) {
       <div
         style={{
           position: "absolute",
-          top: 142,
-          left: 78,
-          right: 78,
+          top: height * 0.074,
+          left: width * 0.072,
+          right: width * 0.072,
           textAlign: "center",
           color: "white",
           fontSize: captionFontSize,
@@ -98,10 +100,10 @@ export function UGCVideo({ productBrief, preferences, recipe, assets }) {
       <div
         style={{
           position: "absolute",
-          left: 12,
-          right: 12,
-          bottom: 42,
-          height: 980,
+          left: width * 0.01,
+          right: width * 0.01,
+          bottom: height * 0.022,
+          height: height * 0.51,
           transform: `scale(${stickerScale}) rotate(${stickerRotate}deg)`,
           transformOrigin: "center",
           display: "grid",
@@ -121,18 +123,18 @@ export function UGCVideo({ productBrief, preferences, recipe, assets }) {
         ) : (
           <div
             style={{
-              width: 560,
-              minHeight: 420,
+              width: width * 0.52,
+              minHeight: height * 0.22,
               display: "grid",
               placeItems: "center",
-              padding: 34,
-              borderRadius: 44,
-              border: "12px solid white",
+              padding: 34 * sizeScale,
+              borderRadius: 44 * sizeScale,
+              border: `${12 * sizeScale}px solid white`,
               background: palette[2],
               color: "#111827",
               boxShadow: "0 22px 60px rgba(0,0,0,0.34)",
               textAlign: "center",
-              fontSize: 88,
+              fontSize: 88 * sizeScale,
               lineHeight: 0.92,
               fontWeight: 1000,
               textTransform: "uppercase"
