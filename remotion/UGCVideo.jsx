@@ -20,8 +20,8 @@ export function UGCVideo({ productBrief, preferences, recipe, assets }) {
   const sizeScale = width / 1080;
   const captionFontSize =
     caption.length > 74 ? 43 * sizeScale : caption.length > 52 ? 49 * sizeScale : 56 * sizeScale;
-  const stickerFloat = interpolate(progress, [0, 0.5, 1], [0, -16, 0]);
-  const stickerScale = interpolate(progress, [0, 0.5, 1], [1.1, 1.14, 1.11]);
+  const stickerFloat = interpolate(progress, [0, 0.5, 1], [0, -12, 0]);
+  const stickerScale = interpolate(progress, [0, 0.5, 1], [1.02, 1.06, 1.03]);
   const stickerRotate = interpolate(progress, [0, 0.5, 1], [-0.45, 0.55, -0.25]);
   const gifSrc = resolveMediaSrc(assets.gif.url);
 
@@ -101,10 +101,10 @@ export function UGCVideo({ productBrief, preferences, recipe, assets }) {
       <div
         style={{
           position: "absolute",
-          left: width * 0.01,
-          right: width * 0.01,
-          bottom: height * 0.022,
-          height: height * 0.51,
+          left: width * 0.12,
+          right: width * 0.12,
+          bottom: height * 0.05,
+          height: height * 0.34,
           transform: `translateY(${stickerFloat}px) scale(${stickerScale}) rotate(${stickerRotate}deg)`,
           transformOrigin: "center",
           display: "grid",
