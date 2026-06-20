@@ -22,33 +22,10 @@ const defaultProps = {
   recipe: {
     duration: 8,
     format: "vertical",
-    hook: "POV: the old way takes too long",
-    scenes: [
-      {
-        start: 0,
-        end: 2.4,
-        text: "POV: the old way takes too long",
-        visual: "pain point",
-        gifQuery: "shocked reaction"
-      },
-      {
-        start: 2.4,
-        end: 5.3,
-        text: "This fixes the annoying part",
-        visual: "product benefit",
-        gifQuery: "mind blown reaction"
-      },
-      {
-        start: 5.3,
-        end: 8,
-        text: "Try it now",
-        visual: "cta",
-        gifQuery: "happy reaction"
-      }
-    ],
-    backgroundQuery: "product lifestyle",
+    funnyText: "me when the annoying part finally handles itself",
+    gifQuery: "shocked reaction sticker",
+    backgroundQuery: "product lifestyle vertical video",
     audioMood: "funny fast upbeat",
-    cta: "Try it now",
     whyThisWorks: "It turns a familiar pain point into a quick payoff."
   },
   assets: {

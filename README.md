@@ -57,6 +57,10 @@ work without optional media-provider keys.
 - After preferences are collected, the app creates a UGC recipe, chooses assets,
   renders an MP4 with Remotion, saves it in `public/renders`, and returns the
   video URL in chat.
+- The rendered video intentionally uses a meme-only format inspired by the
+  assignment examples: one vertical background clip, one funny text caption, one
+  large reaction GIF/sticker, and audio. It avoids product badges, CTA cards, and
+  extra descriptive text inside the video.
 - After a video is generated, the user can ask for another version in chat, such
   as "make it funnier" or "try a more premium version."
 - If website scraping fails, the assistant asks for a one-line product
