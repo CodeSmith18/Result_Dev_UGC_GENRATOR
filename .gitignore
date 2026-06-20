@@ -1,0 +1,14 @@
+.next
+node_modules
+.pnpm-store
+out
+dist
+coverage
+.env
+.env*.local
+public/renders/*.mp4
+public/renders/*.webm
+public/renders/*.mov
+!.gitkeep
+*.log
+.DS_Store
