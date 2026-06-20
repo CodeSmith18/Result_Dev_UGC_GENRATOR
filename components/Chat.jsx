@@ -30,6 +30,18 @@ export function Chat() {
   const listRef = useRef(null);
 
   const canSend = useMemo(() => !isSending, [isSending]);
+  const activePreferenceMessageId = useMemo(() => {
+    if (context.step !== "awaiting_preferences") {
+      return "";
+    }
+
+    return [...messages]
+      .reverse()
+      .find(
+        (message) =>
+          message.role === "assistant" && message.status === "awaiting_preferences"
+      )?.id;
+  }, [context.step, messages]);
   const typingCopy = useMemo(() => {
     if (context.step === "awaiting_preferences") {
       return "Writing the hook, picking assets, and rendering...";
@@ -120,7 +132,13 @@ export function Chat() {
 
       <div className="message-list" ref={listRef}>
         {messages.map((message) => (
-          <MessageBubble key={message.id} message={message} />
+          <MessageBubble
+            disabled={isSending}
+            key={message.id}
+            message={message}
+            onPreferenceSubmit={handleSend}
+            showPreferencePicker={message.id === activePreferenceMessageId}
+          />
         ))}
 
         {isSending ? (

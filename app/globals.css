@@ -149,6 +149,67 @@ p {
   box-shadow: 0 12px 32px rgba(30, 24, 18, 0.14);
 }
 
+.preference-picker {
+  margin-top: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 8px 24px rgba(30, 24, 18, 0.06);
+}
+
+.preference-group + .preference-group {
+  margin-top: 12px;
+}
+
+.preference-label {
+  margin-bottom: 7px;
+  color: var(--accent-strong);
+  font-size: 12px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.preference-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.preference-chip {
+  min-height: 34px;
+  border: 1px solid rgba(15, 118, 110, 0.22);
+  border-radius: 999px;
+  padding: 7px 11px;
+  background: white;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.preference-chip.selected {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: white;
+}
+
+.preference-chip:disabled,
+.generate-choice-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+.generate-choice-button {
+  width: 100%;
+  min-height: 42px;
+  margin-top: 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #171717;
+  color: white;
+  font-weight: 850;
+  cursor: pointer;
+}
+
 .message.user p {
   border-color: rgba(15, 118, 110, 0.2);
   background: var(--accent);
