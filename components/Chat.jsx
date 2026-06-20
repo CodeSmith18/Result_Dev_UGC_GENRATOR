@@ -30,6 +30,17 @@ export function Chat() {
   const listRef = useRef(null);
 
   const canSend = useMemo(() => !isSending, [isSending]);
+  const typingCopy = useMemo(() => {
+    if (context.step === "awaiting_preferences") {
+      return "Writing the hook, picking assets, and rendering...";
+    }
+
+    if (context.step === "video_ready") {
+      return "Working on the next version...";
+    }
+
+    return "Reading the message...";
+  }, [context.step]);
 
   async function handleSend(content) {
     const trimmed = content.trim();
@@ -115,7 +126,7 @@ export function Chat() {
         {isSending ? (
           <div className="typing-row" aria-live="polite">
             <Loader2 size={18} className="spin" />
-            Thinking through the angle...
+            {typingCopy}
           </div>
         ) : null}
       </div>
