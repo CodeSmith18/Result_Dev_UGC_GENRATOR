@@ -61,6 +61,13 @@ work without optional media-provider keys.
   assignment examples: one vertical background clip, one funny text caption, one
   large reaction GIF/sticker, and audio. It avoids product badges, CTA cards, and
   extra descriptive text inside the video.
+- Meme generation uses product-specific joke hints and trend templates so
+  captions feel more like TikTok/Reels comments than generic ad copy.
+- Asset selection randomizes from top Giphy/Pexels results, tracks recent GIF and
+  background URLs in chat context, and avoids reusing the same assets across
+  revisions.
+- Giphy lookups reject common logo/icon/emoji/text results so reaction overlays
+  stay closer to human meme stickers.
 - After a video is generated, the user can ask for another version in chat, such
   as "make it funnier" or "try a more premium version."
 - If website scraping fails, the assistant asks for a one-line product

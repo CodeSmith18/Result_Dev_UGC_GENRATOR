@@ -20,6 +20,7 @@ export function UGCVideo({ productBrief, preferences, recipe, assets }) {
   const captionFontSize = caption.length > 74 ? 43 : caption.length > 52 ? 49 : 56;
   const stickerScale = interpolate(frame % 52, [0, 14, 30, 52], [1.18, 1.28, 1.23, 1.2]);
   const stickerRotate = interpolate(frame % 84, [0, 42, 84], [-1.5, 1.5, -1.5]);
+  const gifSrc = resolveMediaSrc(assets.gif.url);
 
   return (
     <AbsoluteFill
@@ -109,7 +110,7 @@ export function UGCVideo({ productBrief, preferences, recipe, assets }) {
       >
         {assets.gif.url ? (
           <Img
-            src={assets.gif.url}
+            src={gifSrc}
             style={{
               width: "100%",
               height: "100%",
@@ -143,4 +144,12 @@ export function UGCVideo({ productBrief, preferences, recipe, assets }) {
       </div>
     </AbsoluteFill>
   );
+}
+
+function resolveMediaSrc(src = "") {
+  if (!src || /^https?:\/\//i.test(src) || src.startsWith("data:")) {
+    return src;
+  }
+
+  return staticFile(src.replace(/^\/+/, ""));
 }
