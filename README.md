@@ -8,6 +8,9 @@ it reads a product website, understands the positioning, chooses a funny angle,
 picks real media assets, renders them together, and returns a final MP4 URL in
 the same chat.
 
+For a detailed implementation walkthrough, see
+[docs/HOW_IT_WORKS.md](docs/HOW_IT_WORKS.md).
+
 ## What It Does
 
 1. User chats naturally with the app.
