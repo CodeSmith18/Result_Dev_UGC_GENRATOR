@@ -31,6 +31,7 @@ Required once AI analysis is wired:
 
 ```bash
 ANTHROPIC_API_KEY=
+ANTHROPIC_MODEL=claude-sonnet-4-6
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
 ```
 
@@ -53,3 +54,17 @@ work without optional media-provider keys.
 - If the key is missing, deterministic fallback logic keeps the demo moving.
 - The assistant asks tone, audience, and conversion-goal questions in chat before
   video generation.
+- After preferences are collected, the app creates a UGC recipe, chooses assets,
+  renders an MP4 with Remotion, saves it in `public/renders`, and returns the
+  video URL in chat.
+
+## Optional Asset Keys
+
+The MVP works without these, but output improves when they are present:
+
+- `GIPHY_API_KEY` enables real reaction GIF overlays.
+- `PEXELS_API_KEY` enables stock-photo background selection.
+
+Without those keys, the app uses the product website Open Graph image when
+available, a generated visual background otherwise, and an animated sticker
+fallback for the GIF layer.

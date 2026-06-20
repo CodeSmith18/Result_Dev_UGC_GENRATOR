@@ -10,13 +10,16 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "latest",
+    "@remotion/bundler": "^4.0.481",
+    "@remotion/media-utils": "^4.0.481",
+    "@remotion/renderer": "^4.0.481",
     "cheerio": "latest",
     "lucide-react": "latest",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "remotion": "^4.0.481",
     "uuid": "latest",
     "zod": "latest"
-  },
-  "devDependencies": {}
+  }
 }

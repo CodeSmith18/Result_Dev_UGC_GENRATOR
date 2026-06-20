@@ -6,6 +6,8 @@ dist
 coverage
 .env
 .env*.local
+.remotion-cache
+public/audio/generated-beat.wav
 public/renders/*.mp4
 public/renders/*.webm
 public/renders/*.mov

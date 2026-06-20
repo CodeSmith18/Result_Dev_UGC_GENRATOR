@@ -72,7 +72,8 @@ export function Chat() {
       setMessages((current) => [
         ...current,
         createMessage("assistant", data.message.content, {
-          status: data.message.status
+          status: data.message.status,
+          videoUrl: data.message.videoUrl
         })
       ]);
     } catch (error) {

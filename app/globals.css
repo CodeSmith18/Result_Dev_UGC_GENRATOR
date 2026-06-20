@@ -137,6 +137,18 @@ p {
   box-shadow: 0 8px 24px rgba(30, 24, 18, 0.06);
 }
 
+.video-preview {
+  display: block;
+  width: min(260px, 100%);
+  aspect-ratio: 9 / 16;
+  margin-top: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #111827;
+  object-fit: cover;
+  box-shadow: 0 12px 32px rgba(30, 24, 18, 0.14);
+}
+
 .message.user p {
   border-color: rgba(15, 118, 110, 0.2);
   background: var(--accent);
