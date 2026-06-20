@@ -68,8 +68,8 @@ work without optional media-provider keys.
 - Asset selection randomizes from top Giphy/Pexels results, tracks recent GIF and
   background URLs in chat context, and avoids reusing the same assets across
   revisions.
-- Giphy lookups reject common logo/icon/emoji/text results so reaction overlays
-  stay closer to human meme stickers.
+- Giphy lookups now prefer short viral human meme searches and reject common
+  logo/icon/emoji/text/cartoon results so overlays feel like real reaction memes.
 - After a video is generated, the user can ask for another version in chat, such
   as "make it funnier" or "try a more premium version."
 - If website scraping fails, the assistant asks for a one-line product
