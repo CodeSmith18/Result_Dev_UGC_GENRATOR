@@ -177,6 +177,7 @@ p {
 }
 
 .preference-chip {
+  max-width: 100%;
   min-height: 34px;
   border: 1px solid rgba(15, 118, 110, 0.22);
   border-radius: 999px;
@@ -184,6 +185,9 @@ p {
   background: white;
   color: var(--ink);
   cursor: pointer;
+  line-height: 1.2;
+  text-align: left;
+  white-space: normal;
 }
 
 .preference-chip.selected {

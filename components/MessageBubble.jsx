@@ -13,7 +13,11 @@ export function MessageBubble({
       </div>
       <p>{message.content}</p>
       {showPreferencePicker ? (
-        <PreferencePicker disabled={disabled} onSubmit={onPreferenceSubmit} />
+        <PreferencePicker
+          disabled={disabled}
+          groups={message.preferenceOptions}
+          onSubmit={onPreferenceSubmit}
+        />
       ) : null}
       {message.videoUrl ? (
         <video className="video-preview" controls playsInline src={message.videoUrl} />

@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
-const preferenceGroups = [
+const fallbackPreferenceGroups = [
   {
     id: "tone",
     label: "Tone",
@@ -34,19 +34,24 @@ const preferenceGroups = [
   }
 ];
 
-const defaults = {
-  tone: "Funny meme",
-  audience: "Gen Z",
-  goal: "Clicks"
-};
-
-export function PreferencePicker({ disabled, onSubmit }) {
+export function PreferencePicker({ disabled, groups, onSubmit }) {
+  const preferenceGroups = useMemo(() => normalizeGroups(groups), [groups]);
+  const defaults = useMemo(() => getDefaultSelections(preferenceGroups), [
+    preferenceGroups
+  ]);
   const [selected, setSelected] = useState(defaults);
 
   const submitText = useMemo(
-    () => `${selected.tone}, ${selected.audience}, ${selected.goal}`,
-    [selected]
+    () =>
+      preferenceGroups
+        .map((group) => `${group.label}: ${selected[group.id] || group.options[0]}`)
+        .join("\n"),
+    [preferenceGroups, selected]
   );
+
+  useEffect(() => {
+    setSelected(defaults);
+  }, [defaults]);
 
   function choose(groupId, value) {
     if (disabled) {
@@ -95,4 +100,29 @@ export function PreferencePicker({ disabled, onSubmit }) {
       </button>
     </div>
   );
+}
+
+function normalizeGroups(groups) {
+  const normalized = Array.isArray(groups)
+    ? groups
+        .map((group) => ({
+          id: String(group?.id || "").trim(),
+          label: String(group?.label || "").trim(),
+          options: Array.isArray(group?.options)
+            ? group.options
+                .map((option) => String(option || "").trim())
+                .filter(Boolean)
+            : []
+        }))
+        .filter((group) => group.id && group.label && group.options.length)
+    : [];
+
+  return normalized.length ? normalized : fallbackPreferenceGroups;
+}
+
+function getDefaultSelections(groups) {
+  return groups.reduce((next, group) => {
+    next[group.id] = group.options[0];
+    return next;
+  }, {});
 }

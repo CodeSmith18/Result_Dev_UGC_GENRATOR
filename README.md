@@ -54,8 +54,9 @@ work without optional media-provider keys.
 - If the key is missing, deterministic fallback logic keeps the demo moving.
 - The assistant asks tone, audience, and conversion-goal questions in chat before
   video generation.
-- The vibe check is clickable: users choose tone, audience, and goal from option
-  chips, then generate without manually typing preferences.
+- The vibe check is clickable and website-aware: after URL analysis, users choose
+  sarcastic product-specific tone, audience, and goal chips instead of manually
+  typing preferences.
 - After preferences are collected, the app creates a UGC recipe, chooses assets,
   renders an MP4 with Remotion, saves it in `public/renders`, and returns the
   video URL in chat.

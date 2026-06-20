@@ -96,6 +96,7 @@ export function Chat() {
         ...current,
         createMessage("assistant", data.message.content, {
           status: data.message.status,
+          preferenceOptions: data.message.preferenceOptions,
           videoUrl: data.message.videoUrl
         })
       ]);
